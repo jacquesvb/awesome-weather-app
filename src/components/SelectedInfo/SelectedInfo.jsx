@@ -1,7 +1,7 @@
 import MainPanel from "./MainPanel";
 import DetailPanel from "./DetailPanel";
 import MapPanel from "./MapPanel";
-import Forecast from "./Forecast";
+import Forecast from "../Forecast";
 import SavedLocations from "../SavedLocations";
 
 const SelectedInfo = () => {
@@ -11,6 +11,9 @@ const SelectedInfo = () => {
       <DetailPanel />
       <MapPanel />
       <div className="divider divider-neutral col-span-12"></div>
+      <div className="col-span-12 text-3xl text-center text-primary-content">
+        6 Day Forecast
+      </div>
       <Forecast />
       <div className="divider divider-neutral col-span-12"></div>
       <SavedLocations />
