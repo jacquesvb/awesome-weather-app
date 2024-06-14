@@ -1,41 +1,27 @@
+import { Navbar, Typography, Input, Switch } from "@material-tailwind/react";
+import { BiSearch } from "react-icons/bi";
+
 const NavBar = () => {
   return (
-    <nav className="navbar flex items-center justify-around my-3 bg-gradient-to-r from-sky-700 to-indigo-800">
-      <div className="flex-none">
-        <a className="btn btn-ghost desktop:text-2xl text-slate-100 font-bold font-Poppins drop-shadow-lg w-72">
+    <Navbar className="col-span-12 h-[8vh] mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4 bg-gradient-to-r from-sky-700 to-indigo-800">
+      <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+        <Typography
+          as="a"
+          href="#"
+          className="mr-4 cursor-pointer py-1.5 font-medium"
+        >
           Awesome Weather
-        </a>
-      </div>
-      <div className="flex-1 gap-2 justify-center">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered w-full md:w-auto"
-          />
+        </Typography>
+        <div className="flex items-center space-x-4 w-72">
+          <Input label="location search..." icon={<BiSearch />} />
         </div>
-        <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <a>Link 1</a>
-                  </li>
-                  <li>
-                    <a>Link 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-          </ul>
+        <div>
+          <span className="mr-4">°F</span>
+          <Switch />
+          <span className="ml-4 bold">°C</span>
         </div>
       </div>
-      <div className="flex-none w-auto navbar-end px-4">
-        <a className="btn">°F/°C</a>
-      </div>
-    </nav>
+    </Navbar>
   );
 };
 

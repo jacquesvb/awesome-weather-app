@@ -1,48 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
-export default {
+import withMT from "@material-tailwind/react/utils/withMT";
+import colors from "tailwindcss/colors";
+
+// eslint-disable-next-line no-undef
+module.exports = withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  daisyui: {
-    themes: [
-      "light",
-      "dark",
-      "cupcake",
-      "bumblebee",
-      "emerald",
-      "corporate",
-      "synthwave",
-      "retro",
-      "cyberpunk",
-      "valentine",
-      "halloween",
-      "garden",
-      "forest",
-      "aqua",
-      "lofi",
-      "pastel",
-      "fantasy",
-      "wireframe",
-      "black",
-      "luxury",
-      "dracula",
-      "cmyk",
-      "autumn",
-      "business",
-      "acid",
-      "lemonade",
-      "night",
-      "coffee",
-      "winter",
-      "dim",
-      "nord",
-      "sunset",
-    ],
-  },
   theme: {
     screens: {
-      tablet: "640px",
-      laptop: "1024px",
-      desktop: "1280px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
     },
     colors: {
       transparent: "transparent",
@@ -57,26 +24,22 @@ export default {
       pink: colors.pink,
       blue: colors.blue,
       slate: colors.slate,
-      indigo: colors.indigo,
       purple: colors.purple,
       green: colors.green,
       sky: colors.sky,
       red: colors.red,
     },
     fontFamily: {
-      sans: ["Graphik", "sans-serif"],
+      sans: ["graphik", "sans-serif"],
       serif: ["Merriweather", "serif"],
-      Poppins: ["Poppins"],
+      Poppins: ["Poppins", "sans-serif"],
     },
     extend: {
       spacing: {
         128: "32rem",
         144: "36rem",
       },
-      borderRadius: {
-        "4xl": "2rem",
-      },
     },
   },
-  plugins: [require("daisyui")],
-};
+  plugins: [],
+});

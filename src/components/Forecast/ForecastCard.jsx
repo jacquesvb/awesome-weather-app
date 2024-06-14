@@ -1,22 +1,30 @@
+import { Card, CardBody } from "@material-tailwind/react";
+import { WiDayRain } from "react-icons/wi";
+
 const ForecastCard = () => {
   return (
-    <div className="card col-span-2 w-full h-40 bg-primary text-primary-content">
-      <div className="card-body">
+    <Card className="col-span-2 w-full h-40 bg-primary text-primary-content border">
+      <CardBody>
         <div className="grid grid-cols-2 gap-2 justify-between items-start">
-          <h2 className="card-title text-sm self-center col-span-1">
-            06/06/2024
-          </h2>
-          <div className="col-span-1 justify-self-end">Rain</div>
+          <div className="card-title text-sm col-span-1 justify-self-center">
+            Monday
+          </div>
+          <div className="col-span-1 text-sm justify-self-center">04/25</div>
+          <div className="text-sm col-span-1 justify-self-center">Rain</div>
+          <div className="col-span-1 self-center justify-self-center">
+            <WiDayRain />
+          </div>
           <div className="col-span-1">
-            <div className="text-lg">High: 55°</div>
+            <div className="text-md justify-self-center">High:</div>
           </div>
-          <div className="col-span-1 justify-self-end">
-            <div className="text-lg">Low: 48°</div>
+          <div className="col-span-1 justify-self-center">
+            <div className="text-md">Low: </div>
           </div>
-          <div className="col-span-2">Wind: 5 mph E</div>
+          <div className="col-span-1 justify-self-center">55°</div>
+          <div className="col-span-1 justify-self-center">48°</div>
         </div>
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   );
 };
 
