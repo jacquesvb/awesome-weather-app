@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import SelectedInfo from "./components/SelectedInfo";
 import WeatherContext from "./context";
-import { WeatherData } from "./utils";
+import { FetchWeather } from "./utils";
 
 function App() {
   const [metric, setMetric] = useState(false);
@@ -18,16 +18,30 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (selectedLocation.lat && selectedLocation.lon) {
-      const { weather } = WeatherData(
+    const fetchData = async () => {
+      const weatherData = await FetchWeather(
         selectedLocation.lat,
         selectedLocation.lon,
-        selectedLocation.timezone
+        encodeURIComponent(selectedLocation.timezone)
       );
-      setWeatherData(weather);
-    }
+      console.log(weatherData);
+    };
+    fetchData();
   }, [selectedLocation]);
-  console.log("Data: ", weatherData);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const fetchWeatherData = await FetchWeather(
+  //       selectedLocation.lat,
+  //       selectedLocation.lon,
+  //       encodeURIComponent(selectedLocation.timezone)
+  //     );
+  //     console.log("Fetch Weather Data: ", fetchWeatherData);
+  //     setWeatherData(fetchWeatherData);
+  //   };
+  //   fetchData();
+  // }, [selectedLocation]);
+  // console.log("Data: ", weatherData);
   return (
     <div className="App mx-auto max-w-screen-xl h-[100vh] mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400">
       <WeatherContext.Provider
@@ -44,9 +58,12 @@ function App() {
           setIsLoading,
         }}
       >
-        <NavBar />
+        <div>
+          <h1>Hi</h1>
+        </div>
+        {/* <NavBar />
         <SelectedInfo />
-        <Footer />
+        <Footer /> */}
       </WeatherContext.Provider>
     </div>
   );

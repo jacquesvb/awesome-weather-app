@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import WeatherContext from "../context";
 import { Navbar, Typography, Input, Switch } from "@material-tailwind/react";
 import { BiSearch } from "react-icons/bi";
