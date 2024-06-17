@@ -1,15 +1,15 @@
+import { useContext } from "react";
+import WeatherContext from "../context";
 import { Navbar, Typography, Input, Switch } from "@material-tailwind/react";
 import { BiSearch } from "react-icons/bi";
 
 const NavBar = () => {
+  const { metric, setMetric } = useContext(WeatherContext);
+  const handleChange = () => setMetric(!metric);
   return (
     <Navbar className="col-span-12 h-[8vh] mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4 bg-gradient-to-r from-sky-700 to-indigo-800">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
-        >
+        <Typography className="mr-4 pointer-events-none py-1.5 font-medium">
           Awesome Weather
         </Typography>
         <div className="flex items-center space-x-4 w-72">
@@ -17,7 +17,7 @@ const NavBar = () => {
         </div>
         <div>
           <span className="mr-4">°F</span>
-          <Switch />
+          <Switch onChange={handleChange} checked={metric} />
           <span className="ml-4 bold">°C</span>
         </div>
       </div>
