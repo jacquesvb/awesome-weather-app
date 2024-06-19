@@ -18,30 +18,18 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    console.log("Use Effect");
     const fetchData = async () => {
-      const weatherData = await FetchWeather(
+      const data = await FetchWeather(
         selectedLocation.lat,
         selectedLocation.lon,
         encodeURIComponent(selectedLocation.timezone)
       );
-      console.log(weatherData);
+      setWeatherData(data);
     };
-    fetchData();
+    // fetchData();
   }, [selectedLocation]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const fetchWeatherData = await FetchWeather(
-  //       selectedLocation.lat,
-  //       selectedLocation.lon,
-  //       encodeURIComponent(selectedLocation.timezone)
-  //     );
-  //     console.log("Fetch Weather Data: ", fetchWeatherData);
-  //     setWeatherData(fetchWeatherData);
-  //   };
-  //   fetchData();
-  // }, [selectedLocation]);
-  // console.log("Data: ", weatherData);
   return (
     <div className="App mx-auto max-w-screen-xl h-[100vh] mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400">
       <WeatherContext.Provider
@@ -58,12 +46,9 @@ function App() {
           setIsLoading,
         }}
       >
-        <div>
-          <h1>Hi</h1>
-        </div>
-        {/* <NavBar />
+        <NavBar />
         <SelectedInfo />
-        <Footer /> */}
+        <Footer />
       </WeatherContext.Provider>
     </div>
   );
