@@ -17,16 +17,16 @@ function App() {
   const [savedLocations, setSavedLocations] = useState([[]]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (selectedLocation.lat && selectedLocation.lon) {
-      const { weather } = WeatherData(
-        selectedLocation.lat,
-        selectedLocation.lon,
-        selectedLocation.timezone
-      );
-      setWeatherData(weather);
-    }
-  }, [selectedLocation]);
+  // useEffect(() => {
+  //   if (selectedLocation.lat && selectedLocation.lon) {
+  //     const { weather } = WeatherData(
+  //       selectedLocation.lat,
+  //       selectedLocation.lon,
+  //       selectedLocation.timezone
+  //     );
+  //     setWeatherData(weather);
+  //   }
+  // }, [selectedLocation]);
   console.log("Data: ", weatherData);
   return (
     <div className="App mx-auto max-w-screen-xl h-[100vh] mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400">
