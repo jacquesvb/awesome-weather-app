@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import WeatherContext from "../context";
 import { Navbar, Typography, Input, Switch } from "@material-tailwind/react";
 import { BiSearch } from "react-icons/bi";
-import FindForm from "./FindForm";
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const [locations, setLocations] = useState([]);
@@ -24,12 +24,7 @@ const NavBar = () => {
           Awesome Weather
         </Typography>
         <div className="flex items-center space-x-4 w-72">
-          <Input
-            label="location search..."
-            icon={<BiSearch />}
-            onChange={handleInputChange}
-            value={locations}
-          />
+          <SearchBar />
         </div>
         <div>
           <span className="mr-4">°F</span>
