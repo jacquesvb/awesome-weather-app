@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import MainPanel from "./MainPanel";
 import DetailPanel from "./DetailPanel";
 import MapPanel from "./MapPanel";
 import Forecast from "../Forecast";
 import SavedLocations from "../SavedLocations";
 
-const SelectedInfo = () => {
+const SelectedInfo = ({ data }) => {
+  const today = data;
+  console.log("Forecast: ", today);
   return (
     <div className="grid grid-cols-12 gap-4">
       <MainPanel />

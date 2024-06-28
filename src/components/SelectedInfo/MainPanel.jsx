@@ -1,12 +1,8 @@
-import { useContext } from "react";
 import { BiPlusCircle } from "react-icons/bi";
 import { WiDayRain, WiDaySunny } from "react-icons/wi";
 import { Card, CardBody } from "@material-tailwind/react";
-import WeatherContext from "../../context";
 
 const MainPanel = () => {
-  const { weatherData } = useContext(WeatherContext);
-  console.log("Weather Data MainPanel: ", weatherData);
   return (
     <Card className="col-span-4 w-full bg-primary text-primary-content border">
       <CardBody>
