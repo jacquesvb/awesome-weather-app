@@ -1,3 +1,11 @@
+export const convertTime = (hours, minutes = null) => {
+  const ampm = hours >= 12 ? "PM" : "AM";
+  let hour = hours % 12;
+  hour = hour ? hour : 12;
+  if (minutes) return `${hour}:${minutes} ${ampm}`;
+  return `${hour} ${ampm}`;
+};
+
 export const getSun = (timestamp) => {
   const date = new Date(timestamp * 1000);
   let hours = date.getHours().toString();
@@ -6,7 +14,7 @@ export const getSun = (timestamp) => {
   if (hours.length <= 1) hours = `${hours}`;
   if (minutes.length <= 1) minutes = `0${minutes}`;
 
-  return `${hours}:${minutes} `;
+  return convertTime(hours, minutes);
 };
 
 export const getWind = (deg) => {
@@ -40,4 +48,16 @@ export const getVisibility = (number) => {
   if (number > 2000 && number <= 9000) return "Light Fog";
 
   return "Clear";
+};
+
+export const getDay = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const day = date.toLocaleDateString("en-US", { weekday: "short" });
+  return `${day}`;
+};
+
+export const getTime = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const hours = convertTime(date.getHours());
+  return `${hours}`;
 };

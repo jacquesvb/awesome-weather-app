@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
 import Degree from "./helper/Degree";
+import { getDay, getTime } from "../util";
 import WeatherContext from "../context";
 
 const Forecast = () => {
@@ -13,11 +14,10 @@ const Forecast = () => {
           {forecast?.list.map((item, i) => (
             <div
               key={i}
-              className="inline-block text-center w-[50px] flex-shrink-0"
+              className="inline-block text-center w-[100px] flex-shrink-0"
             >
-              <p className="text-sm">
-                {i === 0 ? "Today" : new Date(item.dt * 1000).getHours()}
-              </p>
+              <p className="text-sm">{getDay(item.dt)}</p>
+              <p className="text-sm">{getTime(item.dt)}</p>
               <img
                 alt={`weather-icon-${item.weather[0].description}`}
                 src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
