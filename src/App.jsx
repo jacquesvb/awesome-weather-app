@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, Typography, Switch } from "@material-tailwind/react";
 import Search from "./components/Search";
-import Footer from "./components/Footer";
-import SelectedInfo from "./components/SelectedInfo";
+import WeatherContainer from "./components/WeatherContainer";
 import WeatherContext from "./context";
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
       setOptions([]);
       const lat = selectedCity.lat;
       const lon = selectedCity.lon;
-      const units = metric ? "imperial" : "metric";
+      const units = metric ? "metric" : "imperial";
       try {
         fetch(
           `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&lang=en&appid=${
@@ -38,16 +37,23 @@ function App() {
         console.error({ error });
       }
     }
-  }, [selectedCity]);
+  }, [selectedCity, metric]);
   if (forecast) console.log("Forecast: ", forecast);
   return (
     <div className="App mx-auto max-w-screen-xl h-[100vh] mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400">
       <WeatherContext.Provider
-        value={{ metric, setSelectedCity, options, setOptions }}
+        value={{
+          metric,
+          selectedCity,
+          setSelectedCity,
+          forecast,
+          options,
+          setOptions,
+        }}
       >
         <Navbar className="col-span-12 h-[8vh] mx-auto max-w-screen-xl px-4 lg:px-8 flex items-center justify-between bg-gradient-to-r from-sky-700 to-indigo-800">
           <div className="text-blue-gray-900">
-            <Typography className="pointer-events-none text-white font-bold">
+            <Typography className="pointer-events-none text-2xl text-white font-bold">
               Awesome Weather
             </Typography>
           </div>
@@ -60,9 +66,9 @@ function App() {
             <span className="ml-4 bold">°C</span>
           </div>
         </Navbar>
-        {selectedCity && selectedCity.name}
-        {forecast && <SelectedInfo data={forecast} metric={metric} />}
-        <Footer />
+        <div className="h-[100vh] py-4">
+          {forecast && <WeatherContainer data={forecast} metric={metric} />}
+        </div>
       </WeatherContext.Provider>
     </div>
   );
